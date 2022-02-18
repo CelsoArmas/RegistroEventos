@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <Dialog
+        icon="sap-icon://search"
+        title="Búsqueda de Armadores"
+        state="Information">
+        <beginButton>
+            <Button
+                text="Cerrar"
+                icon="sap-icon://decline"
+                type="Reject" 
+                press="onCloseDialogArmador"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

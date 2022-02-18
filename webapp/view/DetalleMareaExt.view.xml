@@ -1,0 +1,18 @@
+<mvc:View
+	controllerName="com.tasa.registroeventospescav2.controller.DetalleMareaExt"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+    height="100%"
+>
+<App id="appDetallex"> 
+			<pages> 
+				<Page id="pageDetallex" title="" class="sapUiResponsiveContentPadding" showNavButton="false">
+					<content>                                
+                    </content>
+                    
+				</Page>
+			</pages>
+
+		</App> 
+
+</mvc:View>

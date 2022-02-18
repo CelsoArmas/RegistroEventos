@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.m"  xmlns:core="sap.ui.core"> 
+
+	<Panel id="0006" expandable="false">
+		<content>
+			<Table id="P02" width="auto" noDataText="No data" mode="None"  keyboardMode="Edit"
+			items="{eventos>/ListaBodegas}"
+			showSeparators="All" growing="true" growingThreshold="20" 
+			growingScrollToLoad="true" class="sapUiResponsiveMargin">
+				<infoToolbar>
+					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<content>
+							<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar />
+				
+				<columns>
+					<Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+						</header>
+						<footer />
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Descripción" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+						</header>
+						<footer />
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Capacidad" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+						</header>
+						<footer />
+					</Column>
+					<Column width="auto" hAlign="Right" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Cant. pesca" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+						</header>
+						<footer />
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="UM" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+						</header>
+						<footer />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Inactive">
+						<cells>
+							<Text text="{eventos>CDBOD}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+							<Text text="{eventos>DSBOD}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+							<Text text="{eventos>CAPES}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+							<Input value="{eventos>CantPesca}" textAlign="Right" type="Number" showValueHelp="false" enabled="{eventos>/enabledBodCantpesca}" visible="true" width="auto" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+							<Text text="TM" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

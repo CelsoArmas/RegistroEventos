@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.ui.table" xmlns:m="sap.m" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core">
+
+	<m:Panel id="0012" expandable="false">
+		<m:content>
+			<Table id="table_siniestro" selectionMode="MultiToggle" rows="{/ProductCollection}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}" ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar id="ext_siniestro" style="Clear">
+						<m:Title id="title_sin" text="Lista de siniestros: " />
+						<m:ToolbarSpacer />
+						<m:Button text="Agregar" icon="sap-icon://add" tooltip="Clear all filters" press="clearAllFilters" />
+						<m:Button text="Eliminar" icon="sap-icon://decline" tooltip="Clear all filters" press="clearAllFilters" />
+						<m:ToolbarSeparator />
+						<m:SearchField placeholder="Filter" value="{ui>/globalFilter}" search="filterGlobally" width="15rem" />
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column width="11rem" filterProperty="Name">
+						<m:Label text="Siniestro" />
+						<template>
+							<m:Text text="{Name}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem" filterProperty="Category" defaultFilterOperator="StartsWith">
+						<m:Label text="Descripción" />
+						<template>
+							<m:Text text="{Category}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Sistema" />
+						<template>
+							<m:Link text="Show Image" href="{ProductPicUrl}" target="_blank" />
+						</template>
+					</Column>
+					<Column id="availability_sin" width="9rem" filterProperty="Available" showFilterMenuEntry="false" defaultFilterOperator="EQ" filterType="sap.ui.model.type.Boolean">
+						<m:Label text="Repercusión" />
+						<template>
+							<m:ObjectStatus text="{Status}" state="{
+								path: 'Available',
+								formatter: '.formatAvailableToObjectState'
+							}" />
+						</template>
+					</Column>
+					<Column id="price_sin" width="9rem" filterProperty="Price">
+						<m:Label text="Est. anterior" />
+						<template>
+							<u:Currency value="{Price}" currency="{CurrencyCode}" />
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="End" filterProperty="Quantity" filterType="sap.ui.model.type.Integer">
+						<m:Label text="Est. posterior" />
+						<template>
+							<m:Label text="{
+								path: 'Quantity',
+								type: 'sap.ui.model.type.Integer'
+							}" />
+						</template>
+					</Column>
+				</columns>
+
+			</Table>
+
+		</m:content>
+	</m:Panel>
+
+</core:FragmentDefinition>

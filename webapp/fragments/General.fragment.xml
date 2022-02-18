@@ -1,0 +1,154 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+
+	<Panel id="0002" headerText="Ubicacion" expandable="true" expanded="true" class="paneltext">
+		<content>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:formContainers>
+
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Puerto" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<Input value="{eventos>/CDPTO}" description="{eventos>/DSPTO}" type="Text" showValueHelp="false" enabled="false" visible="true" width="80%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_ZonaPesca" visible="false">
+								<form:label>
+									<Label text="Zona de pesca" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<ComboBox selectedKey="{eventos>/CDZPC}" id="cb_ZonaPesca" placeholder="Zona de pesca" items="{combZonaPesca>/data}" editable="true" enabled="true" visible="true" width="100%">
+										<items>
+											<core:Item key="{combZonaPesca>id}" text="{combZonaPesca>descripcion}" />
+										</items>
+									</ComboBox>
+									<!-- <Text text="Zona1" width="25%"/> -->
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_Empresa" visible="false">
+								<form:label>
+									<Label text="Empresa" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<Input value="{eventos>/CDEMP}" type="Text" showValueHelp="false" enabled="false" visible="true" width="100%" required="false" maxLength="0"/>
+									<Text text="{eventos>/NAME1}"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Planta" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<Input type="Text" value="{eventos>/CDPTA}" description="{eventos>/DESCR}" showValueHelp="false" enabled="false" visible="true" width="50%" required="false" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+					
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout singleContainerFullSize="false" adjustLabelSpan="false" columnsL="3" labelSpanL="3" columnsM="2" labelSpanM="2" labelSpanS="8" />
+				</form:layout>
+			</form:Form>
+			<form:Form id="f_LatitudLongitud" width="100%" editable="true" visible="true">
+				<form:formContainers>
+
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<FlexBox>
+										<GenericTag id="lat_1" text="Latit. Ini.:"  design="StatusIconHidden" status="Success" class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
+											<ObjectNumber
+												class="sapUiSmallMarginBottom"
+												inverted="true"
+												number="{eventos>/DescLati1}"/>
+										</GenericTag>
+
+										<GenericTag id="lat_2" text="Lat. Fin:"  design="StatusIconHidden" status="Success" class="sapUiSmallMarginBottom">
+											<ObjectNumber
+												class="sapUiSmallMarginBottom"
+												inverted="true"
+												number="{eventos>/DescLati2}" />
+										</GenericTag>
+											
+									</FlexBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Latitud" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<Input id="ip_latitud1" type="Number" value="{eventos>/LatitudD}" textAlign="Right" enabled="true" visible="true" width="90%"  change="validarLong"/>
+									<Label text="º" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+									<Input id="ip_latitud2" type="Number" value="{eventos>/LatitudM}" textAlign="Right"  enabled="true" visible="true" width="90%"  change="validarLat"/>
+									<Label text="'" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<FlexBox>
+										<GenericTag id="long_1" text="Lng. Ini.:"  design="StatusIconHidden" status="Success" class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
+											<ObjectNumber
+												class="sapUiSmallMarginBottom"
+												inverted="true"
+												number="{eventos>/DescLong1}"/>
+										</GenericTag>
+
+										<GenericTag id="long_2" text="Lng. Fin:"  design="StatusIconHidden" status="Success" class="sapUiSmallMarginBottom">
+											<ObjectNumber
+												class="sapUiSmallMarginBottom"
+												inverted="true"
+												number="{eventos>/DescLong2}" />
+										</GenericTag>
+										<!-- <Label text="{eventos>/DescLati}" design="Bold" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+										<Label text="{eventos>/DescLong}" design="Bold" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" /> -->
+									</FlexBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Longitud" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<Input id="ip_longitud1" value="{eventos>/LongitudD}" textAlign="Right"  enabled="true" visible="true" width="90%"  change="validarLong"/>
+									<Label text="º" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+									<Input id="ip_longitud2" value="{eventos>/LongitudM}"  textAlign="Right"  enabled="true" visible="true" width="90%"  change="validarLat"/>
+									<Label text="'" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout 
+					singleContainerFullSize="false" 
+					adjustLabelSpan="true" 
+					columnsL="3" 
+					labelSpanL="3" 
+					columnsM="3" />
+				</form:layout>
+			</form:Form>
+
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

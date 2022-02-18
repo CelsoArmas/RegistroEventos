@@ -1,0 +1,180 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.tasa.registroeventospescav2",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "crossNavigation": {
+            "inbounds": {
+                "fe-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "registroeventospescav2",
+                    "action": "display",
+                    "title": "Registro de Eventos de Pesca",
+                    "subTitle": "",
+                    "icon": "sap-icon://manager-insight"
+                }
+            }   
+        } 
+    },
+    "sap.ui": {
+        "services":{
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService"
+            }
+        },
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.tasa.registroeventospescav2.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.93.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.tasa.registroeventospescav2.i18n.i18n"
+                }
+            },
+            "CurrentUser":{
+                "preload": true,
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "DetalleMarea": {
+                "preload": true,
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "Dominios": {
+                "preload": true,
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "ConstantsUtility": {
+                "preload": true,
+                "type": "sap.ui.model.json.JSONModel"
+            }
+            
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.tasa.registroeventospescav2.view",
+                "targetAggregation": "pages"
+            },
+            "routes": [
+                {
+                    "name": "Main",
+                    "view": "Main",
+                    "viewId" :"main",
+                    "pattern": "",
+                    "targetAggregation": "pages",
+                    "controlId": "app"
+                },
+                {
+                    "name": "DetalleMarea",
+                    "view": "DetalleMarea",
+                    "pattern": "DetalleMarea",
+                    "targetAggregation": "pages",
+                    "controlId": "app"
+                },
+                {
+                    "name": "DetalleEvento",
+                    "view": "DetalleEvento",
+                    "pattern": "DetalleEvento",
+                    "viewId" :"evento",
+                    "targetAggregation": "pages",
+                    "controlId": "app"
+                },
+                {
+                    "name": "DetalleEventoExt",
+                    "pattern": "DetalleEventoExt",
+                    "target": [
+						"DettalleEventoExt"
+					]
+                },
+                {
+                    "name": "test",
+                    "view": "test",
+                    "pattern": "test",
+                    "targetAggregation": "pages",
+                    "controlId": "app"
+                },
+                {
+                    "pattern": "RouteEvento",
+                    "name": "RouteEvento",
+                    "target": [
+						"EventoExt"
+					]
+                }
+
+            ],
+            "targets": {
+                "DettalleEventoExt": {
+                    "controlAggregation": "pages",
+					"viewName": "DetalleMareaExt",
+					"viewId": "DetalleMareaExt",
+					"viewLevel": 2,
+					"transition": "slide",
+                    "controlId": "app"
+                },
+                "EventoExt" :{
+                    "controlAggregation": "pages",
+					"viewName": "Evento",
+                    "viewId": "Evento",
+                    "controlId": "com.tasa.mareaevento.Evento",
+                    "viewLevel": 2,
+					"transition": "slide"
+
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "com-tasa-registroeventospescav2"
+    }
+}

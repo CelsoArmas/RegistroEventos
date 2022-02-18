@@ -1,0 +1,194 @@
+/* Enter your custom styles here */
+/*tr[data-mydata="A"]{
+    background: #BDCFE9!important;
+  }
+
+tr[data-mydata="C"]{
+  background: #bde9d3!important;
+}
+
+[data-style-class=nameOfYourColor] {
+  background-color: #c9fcd5 !important
+}*/
+/*a#backBtn{
+  visibility: hidden;
+}
+
+#backBtn{
+
+}*/
+
+a.sapUshellShellHeadItmCntnt{
+  visibility: hidden;
+}
+
+/* #__xmlview1--tblMareasPropios-table{
+  
+} */
+
+
+/* -------------------------------------------------------------
+ *   LOCALHOST
+ * -------------------------------------------------------------
+ */
+
+/* Columnas Total Pesca */
+
+
+.tabla {
+  background: #92bef8!important;
+}
+
+.tabla1 {
+  background: #a4e883!important;
+}
+
+.tabla2 {
+  background: #c9e7fc!important;
+}
+/* #__xmlview1--tblMareasPropios-table tbody>tr{
+  background: #7f8388!important;
+} */
+
+/* .prueba{
+  background: #326ef0;
+  background: -webkit-linear-gradient(left, #bbd8ff, #55c487);
+  background: -o-linear-gradient(left, #bbd8ff, #009605);
+  background: -moz-linear-gradient(left, #bbd8ff, #009605);
+  background: linear-gradient(left, #bbd8ff, #55c487);
+  
+} */
+.prueba2 {
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  color: rgb(79, 49, 49);
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+}
+/* tabla de pesca declarada*/
+#evento--tablePescaDesclarada-header  tbody>tr{
+
+  font-weight: bold !important; 
+  background: #154378 !important;
+
+}
+
+#evento--tablePescaDesclarada-header span{
+
+  color: white;
+
+}
+
+#evento--tablePescaDesclarada-header:hover tbody>tr>td {
+  background-color: #215297
+}
+
+/* tabla de pesca biometria*/
+
+#evento--table_biometria-header  tbody>tr{
+  font-weight: bold !important; 
+  background: #154378 !important;
+
+}
+
+#evento--table_biometria-header  span{color: white;}
+
+#evento--table_biometria-header:hover tbody>tr>td {
+  background-color: #215297
+}
+/* tabla de pesca incidental*/
+
+#evento--table_Incidental-header  tbody>tr{
+  font-weight: bold !important; 
+  background: #154378 !important;
+}
+
+#evento--table_Incidental-header  span{
+  color: white;
+}
+
+#evento--table_Incidental-header:hover tbody>tr>td {
+  background-color: #215297
+}
+
+
+#evento--0002-header,#evento--0001-header,#evento--0003-header,#evento--0005-header{
+    text-align: left;
+    font-style: normal;
+    font-weight: 600;
+}
+#__status4-text, #__status5-text{
+  font-size: 16px;
+}
+#evento--idHorometro.sapMITBSelected, #evento--idEquipamiento.sapMITBSelected, #evento--idGeneral.sapMITBSelected, #evento--idDistribucion.sapMITBSelected,
+ #evento--idBiometria.sapMITBSelected, #evento--idPescaDecl.sapMITBSelected, #evento--idEquipamiento.sapMITBSelected, #evento--idPescaDesc.sapMITBSelected{
+  background: #154378 !important;
+  /* background-color: #C0392B; */
+  /* -webkit-transition: background-color 1s; */
+  -webkit-transition: 1s linear;
+  transition: 1s linear;
+  border-radius: 10px 10px 0px 0px;
+}
+#evento--idHorometro.sapMITBSelected div>div>span,#evento--idEquipamiento.sapMITBSelected div>div>span, #evento--idGeneral.sapMITBSelected div>div>span,
+  #evento--idDistribucion.sapMITBSelected div>div>span, #evento--idBiometria.sapMITBSelected div>div>span, #evento--idPescaDecl.sapMITBSelected div>div>span,
+  #evento--idEquipamiento.sapMITBSelected div>div>span, #evento--idPescaDesc.sapMITBSelected div>div>span{
+  color: rgb(255, 255, 255);
+}
+/* #evento--Tab_eventos--header{
+  background: #154378 !important;
+} */
+
+
+/* #evento--idGeneral-text, #evento--idBiometria-text, #evento--idPescaDecl-text, #evento--idHorometro-text, #evento--idEquipamiento-text, #evento--idPescaDesc-text{
+  color: white;
+} */
+
+
+/* .table100.ver6 table {
+  background-color: transparent;
+  background: #7918f2!important;
+} */
+
+
+/* .table100.ver6 td {
+  font-family: Montserrat-Regular;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.table100.ver6 th {     
+  font-family: Montserrat-Medium;
+  font-size: 12px;
+  color: #fff;
+  line-height: 1.4;
+  text-transform: uppercase;
+
+  background-color: rgba(255,255,255,0.32);
+}
+
+.table100.ver6 .row100:hover td {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.table100.ver6 .hov-column-ver6 {
+  background-color: rgba(255,255,255,0.1);
+}
+
+
+.table100.ver6 .row100 td:hover {
+  background-color: rgba(255,255,255,0.2);
+} */
+
+

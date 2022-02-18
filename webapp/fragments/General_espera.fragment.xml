@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+
+	<Panel id="0004" headerText="Espera" expandable="true" expanded="true">
+		<content>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:formContainers>
+
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Motivo de espera" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox selectedKey="{eventos>/CDMES}" id="cmb_motivoEspera" items="{combMotivoEspera>/data}" placeholder="Motivo de espera" editable="true" enabled="true" visible="true" width="50%" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item key="{combMotivoEspera>id}" text="{combMotivoEspera>descripcion}" />
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Duración" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input value="{eventos>/TextDurEspera}" placeholder="Duración" type="Number" showValueHelp="false" enabled="false" visible="true" width="50%"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout singleContainerFullSize="false" adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="2" labelSpanM="2" labelSpanS="8" />
+				</form:layout>
+			</form:Form>
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

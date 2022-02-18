@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+
+	<Panel id="0005" headerText="Adicional" expandable="true" expanded="true">
+		<content>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:formContainers>
+
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Observacion" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input id="ip_observacion" value="{eventos>/KMEVN}" placeholder="Observacion" type="Text" enabled="true" visible="true" width="100%" valueHelpOnly="false" required="false"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_observacioAdic" visible="true">
+								<form:label>
+									<Label text="{eventos>/ObseAdicional}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout singleContainerFullSize="false" adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="2" labelSpanM="2" labelSpanS="8" />
+				</form:layout>
+			</form:Form>
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

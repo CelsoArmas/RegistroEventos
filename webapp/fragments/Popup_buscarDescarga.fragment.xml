@@ -1,0 +1,675 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"  xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns:w="sap.ui.integration.widgets">
+    <Dialog contentWidth="100rem" horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Búsqueda de descarga" type="Standard" verticalScrolling="true">
+        <content>
+            <form:Form editable="true" visible="true">
+                <form:title/>
+                <form:formContainers>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Nro. descarga" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_nro_descarga" type="Text" showValueHelp="false" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Tipo de pesca" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <ComboBox id="pbd_tipo_pesca" selectedKey="{popup_descarga>/TipoPescaSel}" items="{popup_descarga>/TipoPesca}" editable="true" enabled="true"  visible="true" width="50%" valueState="None" maxWidth="100%">
+                                        <items>
+                                            <core:Item key="{popup_descarga>id}" text="{popup_descarga>descripcion}" />
+                                        </items>
+                                    </ComboBox>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Cod. Embarcación" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_cod_embarcacion" type="Text" showValueHelp="false" value="{popup_descarga>/CodEmb}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Matrícula" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_matricula" type="Text" showValueHelp="false" value="{popup_descarga>/Matricula}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Nom. embarcacion" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_nom_embarcacion" type="Text" showValueHelp="false" value="{popup_descarga>/NomEmb}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                        
+                    </form:FormContainer>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Cod. planta" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_cod_planta" type="Text" showValueHelp="false" value="{popup_descarga>/CodPlanta}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Nomb. planta" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_nom_planta" type="Text" showValueHelp="false" value="{popup_descarga>/NomPlanta}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Fecha inicio" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <DatePicker id="pbd_fecha_inicio" value="{popup_descarga>/FechaInicio}" enabled="true" width="50%" displayFormat="dd/MM/yyyy" required="false" valueStateText="Invalid entry" visible="true" valueFormat="dd/MM/yyyy" />
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Hora inicio" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <TimePicker id="pbd_hora_inicio" value="{popup_descarga>/HoraInicio}" valueFormat="HH:mm" displayFormat="HH:mm" width="50%"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Estado" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <ComboBox id="pbd_estado" editable="true" enabled="true" selectedKey="{popup_descarga>/Estado}" items="{popup_descarga>/ListaEstado}" visible="true" width="50%" valueState="None" maxWidth="100%">
+                                        <items>
+                                            <core:Item key="{popup_descarga>id}" text="{popup_descarga>descripcion}" />
+                                        </items>
+                                    </ComboBox>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                    <form:label>
+                                        <Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                    </form:label>
+                                    <form:fields>
+                                        <Button text="Buscar" type="Default" icon="sap-icon://search" iconFirst="true" width="50%" enabled="true" visible="true" iconDensityAware="false" press=".consultarDescarga"/>
+                                    </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                        
+                    </form:FormContainer>
+                    
+                </form:formContainers>
+                
+                <form:layout>
+                    <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="2" labelSpanM="2" labelSpanS="12"/>
+                </form:layout>
+            </form:Form>
+            <Panel
+                accessibleRole="Form"
+                backgroundDesign="Translucent"
+                expandAnimation="true"
+                expandable="false"
+                expanded="false"
+                headerText="Detalle descarga"
+                height="auto"
+                width="100%"
+            >
+                <content>
+                    <HeaderContainer id="headerContainer" scrollStep="200" showDividers="false">
+                                    <HBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                                        <Avatar src="./image/descarga.png" class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displaySize="L"/>
+
+                                        <VBox class="sapUiSmallMarginBottom">
+                                            <Title class="sapUiTinyMarginBottom">
+                                                <Link text="{popup_descarga>/det_Descarga}"/>
+                                            </Title>
+
+                                            <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                                                <Label text="Ticket:" class="sapUiTinyMarginEnd"/>
+                                                <tnt:InfoLabel id="il10" text="{popup_descarga>/det_Ticket}" renderMode="Narrow" colorScheme="8"/>
+                                            </HBox>
+
+                                            <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                                                <Label text="Tipo de pesca:" class="sapUiTinyMarginEnd"/>
+                                                <tnt:InfoLabel id="il11" text="{popup_descarga>/det_TipoPesca}" renderMode="Narrow" colorScheme="8" />
+                                            </HBox>
+
+                                            <HBox>
+                                                <Label text="Planta:" class="sapUiTinyMarginEnd"/>
+                                                <tnt:InfoLabel id="il12" text="{popup_descarga>/det_Planta}" renderMode="Narrow" colorScheme="8" />
+                                            </HBox>
+                                        </VBox>
+                                    </HBox>
+
+
+                                    <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                                        <HBox class="sapUiTinyMarginBottom">
+                                            <Label text="Nom. Planta:" class="sapUiTinyMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_DesPlanta}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginBottom">
+                                            <Label text="Embarcación:" class="sapUiTinyMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_Emba}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginBottom">
+                                            <Label text="Nom. embarcación:" class="sapUiTinyMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_DesEmba}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                        <HBox>
+                                            <Label text="Especie:" class="sapUiTinyMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_Especie}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+                                    </VBox>
+
+                                    <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                                        <HBox class="sapUiTinyMarginBottom">
+                                            <Label text="Desc. especie:" class="sapUiSmallMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_DesEspecie}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                                            <Label text="Lado:" class="sapUiSmallMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_Lado}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginBottom">
+                                            <Label text="Cantd. pesca:" class="sapUiSmallMarginEnd"/>
+                                            <ObjectNumber
+                                                number="{popup_descarga>/det_CantPesca}"
+                                                unit="Tn."
+                                                inverted="true"
+                                                state="Information" />
+                                            <!-- <tnt:InfoLabel text="{popup_descarga>/det_CantPesca}" renderMode="Narrow" colorScheme="8" /> -->
+                                        </HBox>
+
+                                        <HBox renderType="Bare">
+                                            <Label text="Fecha/hora inicio:" class="sapUiSmallMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_FechaIni}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+                                    </VBox>
+
+                                    <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                                        <HBox class="sapUiTinyMarginBottom">
+                                            <Label text="Fecha/hora fin:" class="sapUiSmallMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_FechaFin}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                                            <Label text="Desc. Estado:" class="sapUiSmallMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_Estado}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginBottom">
+                                            <Label text="Header:" class="sapUiSmallMarginEnd"/>
+                                            <tnt:InfoLabel text="{popup_descarga>/det_Header}" renderMode="Narrow" colorScheme="8" />
+                                        </HBox>
+
+                                    </VBox>
+                                </HeaderContainer>
+                </content>
+            </Panel>
+           <VBox class="sapUiSmallMargin">
+                                
+                            <Table
+                                id="productsTable"
+                                items="{path:'popup_descarga>/ListaDescargas', templateShareable:true}"
+                                class="sapFDynamicPageAlignContent"
+                                width="auto">
+                                <columns>
+                                    <Column width="8rem" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Nro. descarga" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="8rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Ticket" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="8rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Tipo de pesca" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="5rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Planta" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Nom. planta" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Nom. embarcacion" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Cantd. pesca" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Fecha/hora inicio" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Fecha/hora fin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem type="Active" press=".onListItemPress">
+                                        <cells>
+                                            <Link text="{popup_descarga>NRDES}" press=".obtenerItem" ></Link>
+                                            <Text text="{popup_descarga>TICKE}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{popup_descarga>DESC_CDTPC}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{popup_descarga>WEPTA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{popup_descarga>DSPTA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{popup_descarga>NMEMB}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <ObjectNumber
+                                                number="{popup_descarga>CNPDS}"
+                                                unit="Tn."
+                                                inverted="true"
+                                                state="Information" />
+                                            <!-- <Text text="{popup_descarga>CNPDS}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>   -->
+                                            <Text text="{popup_descarga>FIDES} {popup_descarga>HIDES}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>  
+                                            <Text text="{popup_descarga>FFDES} {popup_descarga>HFDES}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/> 
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+            <!-- <form:Form editable="true" visible="true">
+                <form:title/>
+                <form:formContainers>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Nro. descarga" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_nro_descarga" type="Text" showValueHelp="false" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Tipo de pesca" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <ComboBox id="pbd_tipo_pesca" selectedKey="{popup_descarga>/TipoPescaSel}" items="{popup_descarga>/TipoPesca}" editable="true" enabled="true"  visible="true" width="50%" valueState="None" maxWidth="100%">
+                                        <items>
+                                            <core:Item key="{popup_descarga>id}" text="{popup_descarga>descripcion}" />
+                                        </items>
+                                    </ComboBox>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Cod. Embarcación" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_cod_embarcacion" type="Text" showValueHelp="false" value="{popup_descarga>/CodEmb}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Matrícula" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_matricula" type="Text" showValueHelp="false" value="{popup_descarga>/Matricula}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Nom. embarcacion" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_nom_embarcacion" type="Text" showValueHelp="false" value="{popup_descarga>/NomEmb}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                        
+                    </form:FormContainer>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Cod. planta" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_cod_planta" type="Text" showValueHelp="false" value="{popup_descarga>/CodPlanta}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Nomb. planta" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="pbd_nom_planta" type="Text" showValueHelp="false" value="{popup_descarga>/NomPlanta}" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Fecha inicio" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <DatePicker id="pbd_fecha_inicio" value="{popup_descarga>/FechaInicio}" enabled="true" width="50%" displayFormat="dd/MM/yyyy" required="false" valueStateText="Invalid entry" visible="true" valueFormat="dd/MM/yyyy" />
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Hora inicio" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <TimePicker id="pbd_hora_inicio" value="{popup_descarga>/HoraInicio}" valueFormat="HH:mm" displayFormat="HH:mm" width="50%"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Estado" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <ComboBox id="pbd_estado" editable="true" enabled="true" selectedKey="{popup_descarga>/Estado}" items="{popup_descarga>/ListaEstado}" visible="true" width="50%" valueState="None" maxWidth="100%">
+                                        <items>
+                                            <core:Item key="{popup_descarga>id}" text="{popup_descarga>descripcion}" />
+                                        </items>
+                                    </ComboBox>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                    <form:label>
+                                        <Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                    </form:label>
+                                    <form:fields>
+                                        <Button text="Buscar" type="Default" icon="sap-icon://search" iconFirst="true" width="50%" enabled="true" visible="true" iconDensityAware="false" press=".consultarDescarga"/>
+                                    </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                        
+                    </form:FormContainer>
+                    
+                </form:formContainers>
+                
+                <form:layout>
+                    <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="2" labelSpanM="2" labelSpanS="12"/>
+                </form:layout>
+            </form:Form>
+            <HeaderContainer id="headerContainer" scrollStep="200" showDividers="false">
+				<HBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displaySize="L"/>
+
+					<VBox class="sapUiSmallMarginBottom">
+						<Title class="sapUiTinyMarginBottom">
+							<Link text="Order Details"/>
+						</Title>
+
+						<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+							<Label text="Manufacturer:" class="sapUiTinyMarginEnd"/>
+							<Text text=" Robotech"/>
+						</HBox>
+
+						<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+							<Label text="Factory:" class="sapUiTinyMarginEnd"/>
+							<Text text=" Florida, OL"/>
+						</HBox>
+
+						<HBox>
+							<Label text="Supplier:" class="sapUiTinyMarginEnd"/>
+							<Link text="Robotech (234242343)"/>
+						</HBox>
+					</VBox>
+				</HBox>
+
+
+				<VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Title text="Contact Information" class="sapUiTinyMarginBottom" />
+
+					<HBox class="sapUiTinyMarginBottom">
+						<core:Icon src="sap-icon://account"/>
+						<Link text=" John Miller" class="sapUiSmallMarginBegin"/>
+					</HBox>
+
+					<HBox class="sapUiTinyMarginBottom">
+						<core:Icon src="sap-icon://outgoing-call"/>
+						<Link text=" +1 234 5678" class="sapUiSmallMarginBegin"/>
+					</HBox>
+
+					<HBox>
+						<core:Icon src="sap-icon://email"/>
+						<Link text="john.miller@company.com" class="sapUiSmallMarginBegin"/>
+					</HBox>
+				</VBox>
+
+				<VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<HBox class="sapUiTinyMarginBottom">
+						<Label text="Created By:" class="sapUiSmallMarginEnd"/>
+						<Link text="Julie Armstrong"/>
+					</HBox>
+
+					<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+						<Label text="Created On:" class="sapUiSmallMarginEnd"/>
+						<Text text=" February 20, 2020"/>
+					</HBox>
+
+					<HBox class="sapUiTinyMarginBottom">
+						<Label text="Changed By:" class="sapUiSmallMarginEnd"/>
+						<Link text="John Miller"/>
+					</HBox>
+
+					<HBox renderType="Bare">
+						<Label text="Changed On:" class="sapUiSmallMarginEnd"/>
+						<Text text=" February 20, 2020"/>
+					</HBox>
+				</VBox>
+			</HeaderContainer>
+            <Table  noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiSmallMargin"
+            items="{path:'popup_descarga>/ListaDescargas', templateShareable:true}">
+                <infoToolbar>
+                    <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                        <content>
+                            <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </content>
+                    </Toolbar>
+                </infoToolbar>
+                <headerToolbar>
+                    <OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+                        <content>
+                            <ToolbarSpacer width=""/>
+                            <OverflowToolbarButton text="Action" type="Default" icon="" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://action-settings" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="8rem" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Nro. descarga" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="8rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Ticket" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="8rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Tipo de pesca" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="5rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Planta" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Nom. planta" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Embarcacion" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Nom. embarcacion" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Especie" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="12rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Desc. especie" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="5rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Lado" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Cantd. pesca" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Fecha/hora inicio" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Fecha/hora fin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="10rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Desc. Estado" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="5rem" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Header" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    
+                </columns>
+                    
+                <items>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                            <layout:HorizontalLayout>
+                                <layout:content/>
+                            </layout:HorizontalLayout>
+                        </cells>
+                    </ColumnListItem>
+                  
+                        <ColumnListItem type="Active" press=".obtenerItem">
+                            <cells>
+                                
+                                <Link text="{popup_descarga>NRDES}" press=".obtenerItem" ></Link>
+                                <Text text="{popup_descarga>TICKE}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>DESC_CDTPC}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>WEPTA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>DSPTA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>CDEMB}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>NMEMB}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>CDSPC}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>DSSPC}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>CDLDS}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                <Text text="{popup_descarga>CNPDS}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>  
+                                <Text text="{popup_descarga>FIDES} {popup_descarga>HIDES}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>  
+                                <Text text="{popup_descarga>FFDES} {popup_descarga>HFDES}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>  
+                                <Text text="{popup_descarga>DESC_ESDES}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/> 
+                                <Text text="{popup_descarga>CDPTA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>           
+                            </cells>
+                        </ColumnListItem>
+                    
+                </items>
+            </Table> -->
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="Cancelar"
+             type="Reject" icon="sap-icon://begin" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press=".cerrarPopUpDescarga"/>
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</core:FragmentDefinition>

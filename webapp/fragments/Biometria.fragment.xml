@@ -1,0 +1,94 @@
+<core:FragmentDefinition xmlns="sap.ui.table" xmlns:m="sap.m" xmlns:core="sap.ui.core">
+	<m:Panel>
+		<m:content>
+			<m:Panel id="0007" expandable="true" headerText="Biometria"  expanded="true">
+				<m:content>
+					<Table id="table_biometria" 
+					selectionMode="MultiToggle" 
+					rows="{eventos>/ListaBiometria}" 
+					visibleRowCount="3" 
+					enableCellFilter="{ui>/cellFilterOn}" ariaLabelledBy="title">
+						<extension>
+							<m:OverflowToolbar style="Clear">
+								<m:Title id="title_biom" text="Lista de biometria: " />
+								<m:ToolbarSpacer />
+								<m:Button text="Agregar" icon="sap-icon://add" press=".handleTableSelectDialogPress">
+									<m:customData>
+										<core:CustomData key="multi" value="true" />
+									</m:customData>
+								</m:Button>
+								<m:Button text="Eliminar" type="Reject" icon="sap-icon://decline" tooltip="Clear all filters" press=".deleteItemsBiometria" />
+
+							</m:OverflowToolbar>
+							<m:OverflowToolbar style="Clear">
+								<m:Label text="Talla menor: " />
+								<m:Input id="idTallaMenor" value="0" width="10%" type="Number" showValueHelp="false" enabled="true" visible="true" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+								<m:ToolbarSpacer width="5%"/>
+								<m:Label text="Talla mayor: " />
+								<m:Input id="idTallaMayor" value="0" width="10%" type="Number" showValueHelp="false" enabled="true" visible="true" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+								<m:ToolbarSeparator />
+								<m:Button text="Actualizar" icon="sap-icon://refresh" tooltip="Clear all filters" press="onButtonPress3" />
+
+							</m:OverflowToolbar>
+						</extension>
+						<columns>
+							
+						</columns>
+
+					</Table>
+
+				</m:content>
+			</m:Panel>
+			<m:Panel id="0014" expandable="true" headerText="Incidental" expanded="true">
+				<m:content>
+					<Table id="table_Incidental" 
+					selectionMode="MultiToggle" 
+					rows="{eventos>/ListaIncidental}" 
+					visibleRowCount="3" 
+					enableCellFilter="{ui>/cellFilterOn}" ariaLabelledBy="title">
+						<extension>
+							<m:OverflowToolbar style="Clear">
+								<m:Title id="title_Incidental" text="Lista de Incidental: " />
+								<m:ToolbarSpacer />
+								<m:Button text="Agregar" icon="sap-icon://add" press=".abrirPopup_inc"/>
+								<m:Button text="Eliminar" type="Reject" icon="sap-icon://decline" tooltip="Clear all filters" press=".deleteIncidentalItems" />
+
+							</m:OverflowToolbar>
+						</extension>
+						<columns>
+							<Column
+								width="11rem"
+								filterProperty="Name">
+								<m:Label text="Codigo" />
+								<template>
+									<m:Text text="{eventos>CDSPC}" wrapping="false" />
+								</template>
+							</Column>
+							<Column
+								width="11rem"
+								filterProperty="Category"
+								defaultFilterOperator="StartsWith">
+								<m:Label text="Descripcion" />
+								<template>
+									<m:Text text="{eventos>DSSPC}" wrapping="false" />
+								</template>
+							</Column>
+							<Column
+								width="9rem"
+								filterProperty="Available">
+								<m:Label text="Porcentaje" />
+								<template>
+									<m:Text text="{eventos>PCSPC}" wrapping="false" />
+								</template>
+							</Column>
+							
+						</columns>
+
+					</Table>
+
+				</m:content>
+			</m:Panel>
+
+		</m:content>
+	</m:Panel>
+</core:FragmentDefinition>

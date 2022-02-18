@@ -1,0 +1,211 @@
+<mvc:View 
+   xmlns:mvc="sap.ui.core.mvc" 
+   xmlns="sap.m" 
+   xmlns:core="sap.ui.core" 
+   xmlns:tnt="sap.tnt" 
+   xmlns:table="sap.ui.table"
+   controllerName="com.tasa.registroeventospescav2.controller.Main" 
+   displayBlock="true" 
+   height="100%">
+   <SplitApp id="App">
+      <masterPages>
+         <Page title="Plantas" backgroundDesign="Transparent">
+            <tnt:NavigationList id="navigationList" width="auto" items="{PlantasModel>/Items}" itemSelect="onSearchMarea">
+               <tnt:NavigationListItem text="{PlantasModel>text}" icon="{PlantasModel>ref}" items="{path: 'PlantasModel>nodes', templateShareable:false}" expanded="false" select="onSelectItemList">
+                  <tnt:NavigationListItem text="{PlantasModel>text}" icon="sap-icon://factory" />
+               </tnt:NavigationListItem>
+            </tnt:NavigationList>
+         </Page>
+      </masterPages>
+      <detailPages>
+         <Page title="Lista de Mareas" backgroundDesign="Transparent" id="ListaPrincipal">
+            <content>
+               <ObjectHeader class="sapUiResponsivePadding--header" id="idObjectHeader" icon="sap-icon://factory" titleActive="false" backgroundDesign="Translucent" numberUnit="Tn" numberState="Success" number="TOTAL DE PESCA DECLARADA : {ListaMareas>/Utils/TotalPescDecl}"
+               responsive="true">
+                  <statuses>
+                     <ObjectStatus
+                        title="Cantidad de embarcaciones propias "
+                        text="{ListaMareas>/Utils/CantEmbProp}"
+                        state="Information" />
+                     <ObjectStatus
+                        title="Cantidad de embarcaciones de terceros "
+                        text="{ListaMareas>/Utils/CantEmbTerc}"
+                        state="Information" />
+                     <ObjectStatus
+                        title="Total pesca declarada Propio "
+                        text=" {ListaMareas>/Utils/PescaDclPropio} Tn"
+                        state="Information" />
+                     <ObjectStatus
+                        title="Total pesca declarada terceros "
+                        text="{ListaMareas>/Utils/PescaDclTercero} Tn"
+                        state="Information" />
+                  </statuses>
+               </ObjectHeader>
+               <IconTabBar id="idIconTabBar" expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" select="onSelectTab" selectedKey="{ListaMareas>/Utils/SelectedKey}">
+                  <items>
+                     <IconTabFilter id="itfPropios" icon="sap-icon://person-placeholder" iconColor="Default" text="Propios" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false" count="{ListaMareas>/Utils/CountPropios}">
+                        <content>
+                           <table:Table id="tblMareasPropios" rows="{path:'ListaMareas>/PropiosFiltro', templateShareable:true}" selectionMode="None" class="sapUiResponsiveMargin" visibleRowCount="{ListaMareas>/Utils/visibleRowsPropios}" rowsUpdated = "cargarFilas">
+                              
+                              <table:columns>
+                                 <table:Column sortProperty="NRO" width="3%">
+                                        <Label text="Nro."/>
+                                        <table:template>
+                                             
+                                             <Text text="{ListaMareas>NRO}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                          
+                                        </table:template>
+                                        
+                                 </table:Column>
+                                 <table:Column filterProperty="NRMAR" defaultFilterOperator="Contains" sortProperty="NRMAR" >
+                                     <Label text="Marea" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>NRMAR}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="NMEMB" defaultFilterOperator="Contains" sortProperty="NMEMB" >
+                                     <Label text="Embarcación" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>NMEMB}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="DESC_CDMMA" defaultFilterOperator="Contains" sortProperty="DESC_CDMMA" >
+                                     <Label text="Mot. Marea" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>DESC_CDMMA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="DSEEC" defaultFilterOperator="Contains" sortProperty="DSEEC" >
+                                     <Label text="Est. Oper." />
+                                     <table:template>
+                                          <Text text="{ListaMareas>DSEEC}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="CNPCM" defaultFilterOperator="Contains" sortProperty="CNPCM" >
+                                     <Label text="Pesc. Dec." />
+                                     <table:template>
+                                          <ObjectNumber number="{= ${ListaMareas>CNPCM} > 0 ? ${ListaMareas>CNPCM} : '' }" unit="{= ${ListaMareas>CNPCM} > 0 ? 'Tn' : '' }" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="FEHOARR" defaultFilterOperator="Contains" >
+                                     <Label text="Fecha/Hora Arribo" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>FEHOARR}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="DESC_ESMAR" defaultFilterOperator="Contains" sortProperty="DESC_ESMAR" >
+                                     <Label text="Estado" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>DESC_ESMAR}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column width="5%">
+                                     <Label text="" />
+                                     <table:template>
+                                          <Link text="{ListaMareas>DESCLINK}" width="auto" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" press="onEditarCrearMarea" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column width="5%">
+                                     <Label text="" />
+                                     <table:template>
+                                          <Link text="Anular" width="auto" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="{ListaMareas>visibleAnularMarea}" press="onAnularMarea"/>
+                                     </table:template>
+                                 </table:Column>
+                              </table:columns>
+                           </table:Table>
+                        </content>
+                     </IconTabFilter>
+                     <IconTabSeparator icon="" iconDensityAware="false" />
+                     <IconTabFilter id="itfTerceros" icon="sap-icon://group" iconColor="Default" text="Terceros" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false" count="{ListaMareas>/Utils/CountTerceros}">
+                        <content>
+                           
+                           <table:Table id="tblMareasTerceros" rows="{path:'ListaMareas>/TercerosFiltro', templateShareable:true}" selectionMode="None" class="sapUiResponsiveMargin" visibleRowCount="{ListaMareas>/Utils/visibleRowsTerceros}" rowsUpdated = "cargarFilas">
+                              <table:columns>
+                                 <table:Column sortProperty="NRO" width="3%">
+                                     <Label text="Nro."/>
+                                     <table:template>
+                                          <Text text="{ListaMareas>NRO}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                          
+                                     </table:template>
+                                     <table:customData>
+                                          <core:CustomData key="mydata" value="{ListaMareas>ESMAR}" writeToDom="true" />
+                                     </table:customData>
+                                 </table:Column>
+                                 <table:Column filterProperty="NRMAR" defaultFilterOperator="Contains" sortProperty="NRMAR" >
+                                     <Label text="Marea" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>NRMAR}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="NMEMB" defaultFilterOperator="Contains" sortProperty="NMEMB" >
+                                     <Label text="Embarcación" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>NMEMB}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="DESC_CDMMA" defaultFilterOperator="Contains" sortProperty="DESC_CDMMA" >
+                                     <Label text="Mot. Marea" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>DESC_CDMMA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="DSEEC" defaultFilterOperator="Contains" sortProperty="DSEEC" >
+                                     <Label text="Est. Oper." />
+                                     <table:template>
+                                          <Text text="{ListaMareas>DSEEC}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="CNPCM" defaultFilterOperator="Contains" sortProperty="CNPCM" >
+                                     <Label text="Pesc. Dec." />
+                                     <table:template>
+                                          <ObjectNumber number="{= ${ListaMareas>CNPCM} > 0 ? ${ListaMareas>CNPCM} : '' }" unit="{= ${ListaMareas>CNPCM} > 0 ? 'Tn' : '' }" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="FEHOARR" defaultFilterOperator="Contains" >
+                                     <Label text="Fecha/Hora Arribo" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>FEHOARR}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column filterProperty="DESC_ESMAR" defaultFilterOperator="Contains" sortProperty="DESC_ESMAR" >
+                                     <Label text="Estado" />
+                                     <table:template>
+                                          <Text text="{ListaMareas>DESC_ESMAR}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column width="5%">
+                                     <Label text="" />
+                                     <table:template>
+                                          <Link text="{ListaMareas>DESCLINK}" width="auto" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" press="onEditarCrearMarea" />
+                                     </table:template>
+                                 </table:Column>
+                                 <table:Column width="5%">
+                                     <Label text="" />
+                                     <table:template>
+                                          <Link text="Anular" width="auto" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="{ListaMareas>visibleAnularMarea}" press="onAnularMarea"/>
+                                     </table:template>
+                                 </table:Column>
+                              </table:columns>
+                           </table:Table>
+                        </content>
+                     </IconTabFilter>
+                  </items>
+               </IconTabBar>
+            </content>
+            <footer>
+               <OverflowToolbar width="auto" height="auto" design="Auto" enabled="true" visible="true">
+                  <content>
+                     <Button id="messagePopoverBtnMain" icon="{ path: '/', formatter: 'buttonIconFormatter' }" type="{ path: '/', formatter: 'buttonTypeFormatter' }" text= "{path: '/', formatter: 'highestSeverityMessages' }" press="handleMessagePopoverPress"/>
+                     <ToolbarSpacer width="" />
+                     <Button text="Nueva Marea" type="Emphasized" iconFirst="true" width="auto" enabled="{ListaMareas>/Utils/readOnlyNuevaMarea}" visible="true" iconDensityAware="false" press="onActionCrearMarea" />
+                     <Button text="Actualizar" type="Emphasized" iconFirst="true" width="auto" enabled="{ListaMareas>/Utils/readOnlyActualizar}" visible="true" iconDensityAware="false" press="onActualizaMareas" />
+                     <Button text="Pesca Declarada" type="Emphasized" iconFirst="true" width="auto" enabled="{ListaMareas>/Utils/readOnlyPescDecl}" visible="true" iconDensityAware="false" press="onTest" />
+                     <Button text="BOTON DE PRUEBAS" type="Default" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="false"
+								iconDensityAware="false" press="onCallUsuario"/>
+                  </content>
+               </OverflowToolbar>
+            </footer>
+         </Page>
+      </detailPages>
+   </SplitApp>
+</mvc:View>

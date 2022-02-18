@@ -1,0 +1,52 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" 
+   xmlns:form="sap.ui.layout.form" >
+   <Dialog
+      title="Nueva Marea">
+        <content>
+            <form:Form width="100%" editable="true" visible="true">
+                <form:formContainers>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Planta" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <ComboBox id="cbxPlantas2" width="auto" items="{ComboModel>/Plantas}" selectedKey="{DetalleMarea>/Form/CDPTA}" change="onActionSelPlanta">
+                                        <items>
+                                            <core:Item text="{ComboModel>DESCR}" enabled="true" key="{ComboModel>CDPTA}"/>
+                                        </items>
+                                    </ComboBox>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Embarcación" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <HBox>
+                                        <Input id="txtEmba_R" maxLength="10" value="{path: 'DetalleMarea>/Form/CDEMB', formatter: '.getDataPopUp'}" showValueHelp="false" enabled="false" width="auto" valueStateText="Invalid entry"/>
+                                        <Button icon="sap-icon://search" press="onAbrirAyudaEmbarcacion"/>
+                                        <Text text="{DetalleMarea>/Form/NMEMB}" />
+                                    </HBox>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                    </form:FormContainer>
+                </form:formContainers>
+                <form:layout>
+                    <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+                </form:layout>
+            </form:Form>
+        </content>
+      <beginButton>
+        <Button type="Emphasized" id="btnAceptarCrearMarea" text="Aceptar" press="onCrearMarea" enabled="false"></Button>
+      </beginButton>
+      <endButton>
+        <Button text="Cancelar" press="onCancelMarea"></Button>
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

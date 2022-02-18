@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.ui.table" xmlns:m="sap.m" xmlns:core="sap.ui.core" >
+
+	<m:Panel id="0013" expandable="false">
+		<m:content>
+			<Table id="table_Accidente" selectionMode="MultiToggle" rows="{eventos>/ListaAccidente}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}" ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title_acc" text="Lista de accidentes: " />
+						<m:ToolbarSpacer />
+						<m:Button text="Agregar" icon="sap-icon://add" tooltip="Clear all filters" press="clearAllFilters" />
+						<m:Button text="Eliminar" icon="sap-icon://decline" tooltip="Clear all filters" press="clearAllFilters" />
+						<m:ToolbarSeparator />
+						<m:SearchField placeholder="Filter" value="{ui>/globalFilter}" search="filterGlobally" width="15rem" />
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column width="11rem" filterProperty="Name">
+						<m:Label text="DescCodiIncidente" />
+						<template>
+							<m:Text text="{Name}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem" filterProperty="Category" defaultFilterOperator="StartsWith">
+						<m:Label text="" />
+						<template>
+							<m:Text text="{Category}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Link_0" />
+						<template>
+							<m:Link text="Show Image" href="{ProductPicUrl}" target="_blank" />
+						</template>
+					</Column>
+				</columns>
+
+			</Table>
+
+		</m:content>
+	</m:Panel>
+
+</core:FragmentDefinition>

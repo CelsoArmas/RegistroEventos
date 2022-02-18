@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" 
+   xmlns:form="sap.ui.layout.form" >
+   <Dialog
+      title="Ingresar Especie">
+        <content>
+            <form:Form width="100%" editable="true" visible="true">
+                <form:formContainers>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Especie" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <ComboBox id="cb_especies_espec_2" width="auto" items="{popupEspecies>/data}">
+                                        <items>
+                                            <core:Item text="{popupEspecies>descripcion}" enabled="true" key="{popupEspecies>id}"/>
+                                        </items>
+                                    </ComboBox>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true" id="fe_popup_cantPesca_2">
+                                <form:label>
+                                    <Label text="Cantidad de Pesca" design="Standard" width="100%" />
+                                </form:label>
+                                <form:fields>
+                                    <Input id="ip_especies_cp_2" type="Number" value="0" showValueHelp="true" width="auto" valueStateText="Invalid entry" description="TM"/>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                    </form:FormContainer>
+                </form:formContainers>
+                <form:layout>
+                    <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+                </form:layout>
+            </form:Form>
+        </content>
+      <beginButton>
+        <Button type="Emphasized" text="Aceptar" press=".obtenerEspecies" enabled="true"></Button>
+      </beginButton>
+      <endButton>
+        <Button text="Cancelar" press=".cerrarPopup_esp"></Button>
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

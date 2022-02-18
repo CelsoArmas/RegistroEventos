@@ -1,0 +1,95 @@
+<core:FragmentDefinition  xmlns="sap.ui.table" xmlns:m="sap.m" xmlns:core="sap.ui.core">
+
+	<m:Panel id="0008" expandable="false">
+		<m:content>
+			<Table
+				class = "tableCol"
+				id="tablePescaDesclarada"
+				selectionMode="Single"
+				rows="{eventos>/ListaPescaDeclarada}"
+				visibleRowCount="7"
+				enableCellFilter="{ui>/cellFilterOn}"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar id="ext_pesca_declarada" style="Clear">
+						<m:Title id="title" text="Cantidad de pesca en bodegas: "/>
+						<m:Text text="{eventos>/CantTotalPescDecla}"/>
+						<m:Text text="TM"/>
+						<m:ToolbarSpacer/>
+					</m:OverflowToolbar>
+					<!-- <m:OverflowToolbar id="ext_botonesPescaDcl" style="Clear">
+							<m:Button text="Agregar" icon="sap-icon://add" press=".buscarEspeciePopup">
+								<m:customData>
+									<core:CustomData key="multi" value="true" />
+								</m:customData>
+							</m:Button>
+							<m:Button text="Eliminar" type="Reject" icon="sap-icon://decline" tooltip="Clear all filters" press=".deleteItemsBiometria" />
+
+					</m:OverflowToolbar> -->
+				</extension>
+				<columns>
+					<Column
+						width="11rem"
+						filterProperty="Name">
+						<m:Label text="Cod. especie" />
+						<template>
+							<m:Text text="{eventos>CDSPC}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						width="11rem"
+						filterProperty="Category"
+						defaultFilterOperator="StartsWith">
+						<m:Label text="Especie" />
+						<template>
+							<m:Text text="{eventos>DSSPC}" wrapping="false" />
+						</template>
+					</Column>
+					<Column id="col_porc_pesc_desc" width="9rem">
+						<m:Label text="% pesca" />
+						<template>
+							<m:Text text="{eventos>PorcPesca}" wrapping="false" />
+							<!-- <m:Input value="{eventos>PorcPesca}" type="Number" visible="true" submit="onActionCalcCantPescaDecla"/> -->
+						</template>
+					</Column>
+					<Column
+						width="9rem"
+						filterProperty="Available">
+						<m:Label text="Pesca declarada" />
+						<template>
+							<m:Input id="prueba" value="{eventos>CNPCM}" type="Number" showValueHelp="false" enabled="{eventos>/enabledCantPescDeclarada}" visible="true" textAlign="Right"/>
+						</template>
+					</Column>
+					<Column
+						id="price"
+						width="9rem"
+						filterProperty="Price">
+						<m:Label text="UM" />
+						<template>
+							<m:Text text="{eventos>DSUMD}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="clm_moda_pescDecl"
+						width="10rem"
+						hAlign="End">
+						<m:Label text="Moda" />
+						<template>
+							<m:Text text="{eventos>ZMODA}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						width="30rem">
+						<m:Label text="Observacion" />
+						<template>
+							<m:Text text="{eventos>OBSER}" wrapping="false" />
+						</template>
+					</Column>
+				</columns>
+				
+			</Table>
+
+		</m:content>
+	</m:Panel>
+
+</core:FragmentDefinition>

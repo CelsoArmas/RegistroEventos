@@ -1,0 +1,15 @@
+<mvc:View
+	controllerName="com.tasa.registroeventospescav2.controller.test"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+>
+
+<Page title="PANTALLA DE TEST" showNavButton="true" showFooter="true">
+    <content>
+        
+    </content>		
+</Page>
+	
+</mvc:View>

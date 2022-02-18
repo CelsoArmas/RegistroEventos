@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+>
+
+	<Dialog
+        icon="sap-icon://search"
+        title="Búsqueda de Embarcaciones"
+        state="Information">
+        <beginButton>
+            <Button
+                text="Cerrar"
+                icon="sap-icon://decline"
+                type="Reject" 
+                press="onCerrarEmba"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>
+

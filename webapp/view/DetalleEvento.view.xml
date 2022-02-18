@@ -1,0 +1,108 @@
+<mvc:View
+	controllerName="com.tasa.registroeventospescav2.controller.DetalleEvento"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	xmlns:f="sap.f"
+>
+	
+			<Page title="Detalle de Evento" >
+			<!-- showNavButton="false" navButtonPress="onBackDetalleMarea" -->
+				<content>
+					<!-- <layout:VerticalLayout width="100%" visible="true" class="prueba"> -->
+					<layout:VerticalLayout width="100%" visible="true">
+						<layout:content>
+								<FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch" class="sapUiSmallMarginBottom sapUiSmallMarginBegin sapUiSmallMarginTop">
+									<VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+									<Label text="{DetalleMarea>/Form/DESC_CDMMA}" design="Bold"/>
+									<f:Avatar
+											displaySize="L"
+											class="sapUiTinyMarginEnd"
+											fallbackIcon="sap-icon://dimension">
+									</f:Avatar>
+									</VBox>
+									<VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+											<ObjectStatus title="Marea" text="{=${DetalleMarea>/Form/NRMAR} === '' ? 0 : ${DetalleMarea>/Form/NRMAR} }" class="sapMObjectStatusLarge" inverted="true" state="Information"/>
+											<ObjectStatus title="Embarcacion" text="{DetalleMarea>/Form/CDEMB} {DetalleMarea>/Form/NMEMB}" class = "sapUiSmallMarginTop"/>
+										</layout:VerticalLayout>
+									</VBox>
+									<VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+											<ObjectStatus title="Matricula" text="{DetalleMarea>/Form/MREMB}"/>
+											<ObjectStatus class="letraCabecera"  title="Planta" text="{DetalleMarea>/DistribFlota/DESCR}" inverted="true" state="Success"/>
+											<ObjectStatus class="letraCabecera" title="Tipo de Evento" text="{DetalleMarea>/Utils/DescTipoEvento}" inverted="true" state="Success"/>
+										</layout:VerticalLayout>
+									</VBox>
+									
+								</FlexBox>
+							<!-- <ObjectListItem intro="{DetalleMarea>/Form/DESC_CDMMA}" title="Marea : {=${DetalleMarea>/Form/NRMAR} === '' ? 0 : ${DetalleMarea>/Form/NRMAR} }" icon="sap-icon://order-status" number="" numberUnit="" numberState="None" type="Active" selected="false">
+								<attributes>
+									<ObjectAttribute title="Embarcacion" text="{DetalleMarea>/Form/CDEMB} {DetalleMarea>/Form/NMEMB}" active="false" visible="true" />
+									<ObjectAttribute title="Matricula" text="{DetalleMarea>/Form/MREMB}" active="false" visible="true" />
+									<ObjectAttribute title="Tipo de Evento" text="{DetalleMarea>/Utils/DescTipoEvento}" active="false" visible="true" />
+								</attributes>
+								<firstStatus />
+								<secondStatus />
+							</ObjectListItem> -->
+						</layout:content>
+					</layout:VerticalLayout>
+					<IconTabBar  id="Tab_eventos" select="obtenerTab"  expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Gen">
+						<items>
+							<IconTabFilter key="Gen" id="idGeneral" iconColor="Default" text="General" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+
+							</IconTabFilter>
+							<IconTabFilter key="Dist" id="idDistribucion" iconColor="Default" text="Distribucion" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+
+							</IconTabFilter>
+							<IconTabFilter key="Biom" id="idBiometria" iconColor="Default" text="Biometria" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+								
+							</IconTabFilter>
+							<IconTabFilter key="PDesc" id="idPescaDesc" iconColor="Default" text="Pesca descargada" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+								
+							</IconTabFilter>
+							<IconTabFilter key="PDecl" id="idPescaDecl" iconColor="Default" text="Pesca declarada" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+								
+							</IconTabFilter>
+							<IconTabFilter key="Horo" id="idHorometro" iconColor="Default" text="Horómetro" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="{visible>/TabHorometro}" iconDensityAware="false">
+								
+							</IconTabFilter>
+							<IconTabFilter key="Equi" id="idEquipamiento" iconColor="Default" text="Equipamiento" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+								
+							</IconTabFilter>
+							<IconTabFilter key="Sini" id="idSiniestro" iconColor="Default" text="Siniestro" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+								
+							</IconTabFilter>
+							<IconTabFilter key="Acci" id="idAccidente" iconColor="Default" text="Accidente" count="" design="Vertical" showAll="false" 
+							textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+								
+							</IconTabFilter>
+							<IconTabSeparator icon="" iconDensityAware="false" />
+						</items>
+						<content />
+					</IconTabBar>
+				</content>
+				<footer>
+					<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+						<content>
+							<Button id="messagePopoverDetalleEve" icon="{ path: '/', formatter: 'buttonIconFormatter' }" type="{ path: '/', formatter: 'buttonTypeFormatter' }" text= "{path: '/', formatter: 'highestSeverityMessages' }" press="handleMessagePopoverPress"/>
+							<ToolbarSpacer width="" />
+							<Button text="Remover evento" type="Reject" icon="" iconFirst="true" width="auto" enabled="true" visible="{visible>/LinkRemover}" iconDensityAware="false" press=".removerEvento_button" />
+							<Button text="Descartar cambios" type="Reject" icon="" iconFirst="true" width="auto" enabled="true" visible="{visible>/LinkDescartar}" iconDensityAware="false" press=".descartarCambios_button" />
+							<Button text="Atras" type="Emphasized" icon="sap-icon://nav-back" press=".validarCambios" />
+							<Button text="Guardar" type="Emphasized" icon="sap-icon://save" press=".SaveAll" />
+						</content>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+
+</mvc:View>

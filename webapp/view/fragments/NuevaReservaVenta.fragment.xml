@@ -1,0 +1,146 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+>
+<Dialog
+   title="{DetalleMarea>/Config/TxtNuevaVentaRes}"
+>
+    <content>
+        
+								<form:Form width="100%" editable="true" visible="true">
+									<form:title/>
+									<form:formContainers>
+										<form:FormContainer visible="true">
+											<form:formElements>
+												<form:FormElement visible="true">
+													<form:label>
+														<Label text="Embarcacion" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</form:label>
+													<form:fields>
+														<Text text="{DetalleMarea>/Form/CDEMB} {DetalleMarea>/Form/NMEMB}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement visible="true">
+													<form:label>
+														<Label text="Marea" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</form:label>
+													<form:fields>
+														<Text text="{DetalleMarea>/Form/NRMAR} {DetalleMarea>/Form/DESC_CDMMA}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement visible="true">
+													<form:label>
+														<Label text="Evento" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</form:label>
+													<form:fields>
+														<Text text="{DetalleMarea>/Form/DESC_CDTEV}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement visible="true">
+													<form:label>
+														<Label text="Fecha de Reserva" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</form:label>
+													<form:fields>
+														<Text text="{DetalleMarea>/Form/FIEVN}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</form:fields>
+												</form:FormElement>
+											</form:formElements>
+											<form:title/>
+										</form:FormContainer>
+									</form:formContainers>
+									<form:layout>
+										<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+									</form:layout>
+								</form:Form>
+								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+										class="sapUiResponsiveMargin" items="{DetalleMarea>/Suministro}">
+									<infoToolbar>
+										<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+											<content>
+												<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</content>
+										</Toolbar>
+									</infoToolbar>
+									<headerToolbar>
+										<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+											<content>
+												<Title text="Suministros" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+												<ToolbarSpacer width=""/>
+												<Button text="Nuevo Suministro" type="Default" icon="sap-icon://add-product" iconFirst="true" width="auto" enabled="true" visible="false"
+														iconDensityAware="false" press="onPressNuevoSuministro"/>
+											</content>
+										</OverflowToolbar>
+									</headerToolbar>
+									<columns>
+										<Column width="5%" hAlign="Center" vAlign="Middle" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Nro." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Suministro" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="12%" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Cantidad" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="15%" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Centro" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="20%" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false" visible="{DetalleMarea>/Config/visibleAlmacenReserva}">
+											<header>
+												<Text text="Almacén" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="20%" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false" visible="{DetalleMarea>/Config/visibleAlmacenExterno}">
+											<header>
+												<Text text="Almacén" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+											</header>
+											<footer/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem type="Inactive">
+											<cells>
+												<Text text="{DetalleMarea>NRPOS}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<Text text="{DetalleMarea>MAKTX}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+														visible="true"/>
+												<Input value="{DetalleMarea>CNSUM}" description="{DetalleMarea>DSUMD}" showValueHelp="false" width="auto" valueStateText="Invalid entry"/>
+												<Text text="{DetalleMarea>WERKS}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ComboBox id="cbxPlantas" width="auto" items="{DetalleMarea>/ConfigReservas/Almacenes}" selectedKey="{DetalleMarea>/Suministro/0/CDALE}" change="onSelectAlmacen" visible="{DetalleMarea>/Config/visibleAlmacenReserva}">
+                                        			<items>
+                                            			<core:Item text="{DetalleMarea>DSALM}" enabled="true" key="{DetalleMarea>CDALE}"/>
+                                        			</items>
+                                    			</ComboBox>
+												<ComboBox width="auto" items="{DetalleMarea>/ConfigReservas/AlmacenesExt}" selectedKey="{DetalleMarea>CDALE}" change="onSelectAlmacen" visible="{DetalleMarea>/Config/visibleAlmacenExterno}">
+                                        			<items>
+                                            			<core:Item text="{DetalleMarea>DESCR}" enabled="true" key="{DetalleMarea>VAL01}"/>
+                                        			</items>
+                                    			</ComboBox>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+    </content>
+   <beginButton>
+        <Button type="Emphasized" id="btnAceptarCrearMarea" text="{DetalleMarea>/Utils/TxtBtnSuministro}" press="onProcesarSum" enabled="true"></Button>
+    </beginButton>
+    <endButton>
+        <Button type="Emphasized"  text="Cerrar" press="onCancelNuevaResVent" enabled="true"></Button>
+    </endButton>
+    
+</Dialog>
+</core:FragmentDefinition>

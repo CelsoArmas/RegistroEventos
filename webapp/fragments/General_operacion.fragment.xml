@@ -1,0 +1,108 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+
+	<Panel id="0003" headerText="Operación" expandable="true" expanded="true">
+		<content>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:formContainers>
+
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement id="fe_estadoOperacion" visible="true">
+								<form:label>
+									<Label text="Estado de operación" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox selectedKey="{eventos>/ESOPE}" id="cmb_estaOperacion" items="{combEstadoOperacion>/data}" placeholder="Estado de operación" editable="true" enabled="true" visible="true" width="50%" valueState="None" maxWidth="100%" change=".map_onActionVerMotiLimitacion">
+										<items>
+											<core:Item key="{combEstadoOperacion>id}" text="{combEstadoOperacion>descripcion}" />
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_tipoDescarga" visible="true">
+								<form:label>
+									<Label text="Tipo de descarga" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox selectedKey="{eventos>/CDTDS}" id="cb_tipoDescarga" items="{combTipoDescarga>/data}" placeholder="Tipo de descarga" editable="true" enabled="true" visible="true" width="50%" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item key="{combTipoDescarga>id}" text="{combTipoDescarga>descripcion}" />
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_MotiNoPesca" visible="{visible>/MotiNoPesca}">
+								<form:label>
+									<Label text="Motivo de no pesca" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox id= "cb_motNoPesca" selectedKey="{eventos>/CDMNP}" placeholder="Motivo de no pesca" items="{combMotivoNoPesca>/data}" editable="true" enabled="true" visible="true" width="50%" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item key="{combMotivoNoPesca>id}" text="{combMotivoNoPesca>descripcion}" />
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_temperaturaMar" visible="true">
+								<form:label>
+									<Label text="Temperatura del mar" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<Input id="i_temperaturaMar" value="{eventos>/TEMAR}" textAlign="Right" submit=".prueba" description="ºC" type="Number" showValueHelp="false" enabled="true" visible="true" width="30%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_stockCombustible" visible="true">
+								<form:label>
+									<Label text="Stock de combustible" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+										<Input id="i_stockCombustible" description=":: {eventos>/DESSTCMB}" value="{eventos>/STCMB}" textAlign="Right" submit=".prueba" type="Number" showValueHelp="false" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" change=".valStock_gen" liveChange=".cargarStockFormat"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_muestra" visible="true">
+								<form:label>
+									<Label text="Muestra" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<Input id="ip_muestra" value="{eventos>/MUEST}" type="Number" textAlign="Right" showValueHelp="false" enabled="true" visible="true" width="50%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement id="fe_sistema_frio" visible="true">
+								<form:label>
+									<Label text="Estado sist. frio" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+								</form:label>
+								<form:fields>
+									<ComboBox selectedKey="{eventos>/ESTSF}" id="ip_sistema_frio" items="{combSistemaFrio>/data}" placeholder="Estado sist. frio" editable="true" enabled="true" visible="true" width="50%" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item key="{combSistemaFrio>id}" text="{combSistemaFrio>descripcion}" />
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement id="fe_motivoLimitacion" visible="{visible>/MotiLimitacion}">
+								<form:label>
+									<Label text="Motivo de limitación:" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox selectedKey="{eventos>/CDMLM}" id="cmb_motivoLim" items="{combMotivoLim>/data}" placeholder="Motivo de limitación" editable="true" enabled="true" visible="true" width="50%" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item key="{combMotivoLim>id}" text="{combMotivoLim>descripcion}" />
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout singleContainerFullSize="false" adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="2" labelSpanM="2" labelSpanS="8" />
+				</form:layout>
+			</form:Form>
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

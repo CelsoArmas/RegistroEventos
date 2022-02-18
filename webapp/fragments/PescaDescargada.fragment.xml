@@ -1,0 +1,246 @@
+<core:FragmentDefinition xmlns="sap.ui.table" xmlns:m="sap.m" xmlns:core="sap.ui.core">
+
+	<m:Panel id="0009" expandable="false">
+		<m:content>
+			<Table id="table_pesc_desc_ticket" selectionMode="MultiToggle" 
+			rows="{eventos>/ListaPescaDescargada}" visibleRowCount="3" 
+			enableCellFilter="{ui>/cellFilterOn}" ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar id="ext_pesc_desc" style="Clear">
+						<m:Title id="title2" text="Cantidad de pesca declarada: " />
+						<m:Text text="{DetalleMarea>/Eventos/CantPescaDescDeclText} " />
+						<m:Text text="TM" />
+						<m:ToolbarSpacer />
+
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column id="pdt_col_BuscarDesc" width="4rem">
+						<m:Label text="" />
+						<template>
+							<m:Button icon="sap-icon://inspection" tooltip="Buscar descarga" press=".buscarDescarga"/>
+						</template>
+					</Column>
+					<Column id="pdt_col_EliminarDesc" width="4rem">
+						<m:Label text="" />
+						<template>
+							<m:Button icon="sap-icon://sys-cancel-2" tooltip="Eliminar descarga" press=".eliminarDesacarga"/>
+						</template>
+					</Column>
+					<Column width="8rem">
+						<m:Label text="Nro. descarga" />
+						<template>
+							<m:Text text="{eventos>Nro_descarga}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="8rem" filterProperty="Category" defaultFilterOperator="StartsWith">
+						<m:Label text="Ticket" />
+						<template>
+							<m:Text text="{eventos>TICKE}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Especie" />
+						<template>
+							<m:Text text="{eventos>CDSPC}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Desc. especie" />
+						<template>
+							<m:Text text="{eventos>DSSPC}" />
+						</template>
+					</Column>
+					<Column width="8rem" filterProperty="Available">
+						<m:Label text="Cant. descargada" />
+						<template>
+							<m:Input value="{eventos>CNPDS}" type="Number" showValueHelp="false" enabled="{eventos>/enabledCantPescDescargada}" visible="true" />
+						</template>
+					</Column>
+					<Column id="price2" width="8.5rem" filterProperty="Price">
+						<m:Label text="Cant. declarada" />
+						<template>
+							<m:Input value="{eventos>CantPescaDeclarada}" type="Number" showValueHelp="false" enabled="{eventos>/enabledCantPescDeclDesc}" visible="true" />
+						</template>
+					</Column>
+					<Column width="12rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Pto. Descarga" />
+						<template>
+							<m:ComboBox id= "pd_puntodesc" placeholder="Pto. Descarga" items="{path:'combPuntoDescarga>/data', templateShareable:false}" selectedKey="{eventos>CDPDG}" editable="true" enabled="true" visible="true" width="100%" valueState="None" maxWidth="100%">
+								<m:items>
+									<core:Item key="{combPuntoDescarga>CDPDG}" text="{combPuntoDescarga>DSPDG}" />
+								</m:items>
+							</m:ComboBox>
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Lado descarga" />
+						<template>
+							<m:Text text="{eventos>DESC_CDLDS}" />
+						</template>
+					</Column>
+					<Column width="15rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Fecha/hora inicio" />
+						<template>
+							<m:DateTimePicker value="{eventos>FIDES} {eventos>HIDES}" displayFormat="dd/MM/yyyy HH:mm:ss" required="false" valueStateText="Invalid entry" enabled="false" visible="true" valueFormat="yyyyMMddHHmmss" />
+						</template>
+					</Column>
+					<Column width="15rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Fecha/hora fin" />
+						<template>
+							<m:DateTimePicker value="{eventos>FFDES} {eventos>HFDES}" displayFormat="dd/MM/yyyy HH:mm:ss" required="false" valueStateText="Invalid entry" enabled="false" visible="true" valueFormat="yyyyMMddHHmmss" />
+						</template>
+					</Column>
+					<Column width="12rem" hAlign="End" filterProperty="Quantity" filterType="sap.ui.model.type.Integer">
+						<m:Label text="Fecha de producción" />
+						<template>
+							<m:DatePicker id= "pd_chi_fechProd" value="{eventos>FECCONMOV}" enabled="{eventos>/enabledFechProdDesc}" displayFormat="dd/MM/yyyy" required="false" valueStateText="Invalid entry" visible="true" valueFormat="yyyyMMdd" />
+						</template>
+					</Column>
+				</columns>
+
+			</Table>
+			<Table id="table_pesc_desc_especie" selectionMode="MultiToggle" rows="{eventos>/ListaPescaDescargada}" visibleRowCount="3" enableCellFilter="{ui>/cellFilterOn}" ariaLabelledBy="title">
+				<columns>
+					<Column id="pde_col_EliminarDesc" width="4rem">
+						<m:Label text="" />
+						<template>
+							<m:Button icon="sap-icon://sys-cancel-2" tooltip="Eliminar descarga" press=".eliminarDesacarga"/>
+						</template>
+					</Column>
+					<Column width="4rem">
+						<m:Label text="" />
+						<template>
+							<m:Text text="{Name}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="Nro. descarga" />
+						<template>
+							<m:Text text="{eventos>Nro_descarga}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Especie" />
+						<template>
+							<m:Link text="{eventos>CDSPC}" href="{ProductPicUrl}" target="_blank" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Desc. especie" />
+						<template>
+							<m:Text text="{eventos>DSSPC}" />
+						</template>
+					</Column>
+					<Column width="9rem" filterProperty="Available">
+						<m:Label text="Cant. descargada" />
+						<template>
+							<m:Input value="{eventos>CNPDS}" type="Number" showValueHelp="false" enabled="{eventos>/enabledCantPescDescargada}" visible="true" />
+						</template>
+					</Column>
+					<Column id="price4" width="9rem" filterProperty="Price">
+						<m:Label text="Cant. declarada" />
+						<template>
+							<m:Input value="{eventos>CantPescaDeclarada}" type="Number" showValueHelp="false" enabled="{eventos>/enabledCantPescDeclDesc}" visible="true" />
+						</template>
+					</Column>
+				</columns>
+
+			</Table>
+			<Table id="table_pesc_desc_CHD" selectionMode="MultiToggle" rows="{eventos>/ListaPescaDescargada}" visibleRowCount="3" enableCellFilter="{ui>/cellFilterOn}" ariaLabelledBy="title">
+			<extension>
+					<m:OverflowToolbar id="ext_pesc_desc_chd" style="Clear">
+						<m:Title id="title3" text="Cantidad de pesca declarada: " />
+						<m:Text text="{DetalleMarea>/Eventos/CantPescaDescDeclText} " />
+						<m:Text text="TM" />
+						<m:ToolbarSpacer />
+
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column id="pdCHD_col_BuscarDesc" width="4rem">
+						<m:Label text="" />
+						<template>
+							<m:Button icon="sap-icon://inspection" tooltip="Buscar descarga" press=".buscarDescarga"/>
+						</template>
+					</Column>
+					<Column id="pdCHD_col_EliminarDesc" width="4rem">
+						<m:Label text="" />
+						<template>
+							<m:Button icon="sap-icon://sys-cancel-2" tooltip="Eliminar descarga" press=".eliminarDesacarga"/>
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="Nro. descarga" />
+						<template>
+							<m:Text text="{eventos>Nro_descarga}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem" filterProperty="Category" defaultFilterOperator="StartsWith">
+						<m:Label text="Ticket" />
+						<template>
+							<m:Text text="{eventos>TICKE}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Especie" />
+						<template>
+							<m:Text text="{eventos>CDSPC}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Desc. especie" />
+						<template>
+							<m:Text text="{eventos>DSSPC}" />
+						</template>
+					</Column>
+					<Column  width="9rem" filterProperty="Available">
+						<m:Label text="Cant. descargada" />
+						<template>
+							<m:Input value="{eventos>PESACUMOD}" type="Number" showValueHelp="false" enabled="{eventos>/enabledCantPescDescargada}" visible="true" />
+						</template>
+					</Column>
+					<Column id="price3" width="9rem" filterProperty="Price" visible="false">
+						<m:Label text="Cant. pesca" />
+						<template>
+							<m:Text text="{eventos>PESACUMOD}"/>
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Cant. declarada" />
+						<template>
+							<m:Input value="{eventos>CantPescaDeclarada}" type="Number" showValueHelp="false" enabled="{eventos>/enabledCantPescDeclDesc}" visible="true" />
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Lado descarga" />
+						<template>
+							<m:Text text="{eventos>CDLDS}"/>
+						</template>
+					</Column>
+					<Column width="15rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Fecha/hora inicio" />
+						<template>
+							<m:DateTimePicker value="{eventos>FIDES} {eventos>HIDES}" displayFormat="dd/MM/yyyy HH:mm:ss" required="false" valueStateText="Invalid entry" enabled="false" visible="true" valueFormat="yyyyMMddHHmmss" />
+						</template>
+					</Column>
+					<Column width="15rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Fecha/hora fin" />
+						<template>
+							<m:DateTimePicker value="{eventos>FFDES} {eventos>HFDES}" displayFormat="dd/MM/yyyy HH:mm:ss" required="false" valueStateText="Invalid entry" enabled="false" visible="true" valueFormat="yyyyMMddHHmmss" />
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="End" filterProperty="Quantity">
+						<m:Label text="Fecha de producción" />
+						<template>
+							<m:DatePicker id= "pd_chd_fechProd" value="{eventos>FECCONMOV}" enabled="{eventos>/enabledFechProdDesc}" displayFormat="dd/MM/yyyy" required="false" valueStateText="Invalid entry" visible="true" valueFormat="yyyyMMdd" />
+						</template>
+					</Column>
+				</columns>
+
+			</Table>
+
+		</m:content>
+	</m:Panel>
+
+</core:FragmentDefinition>
